@@ -36,10 +36,15 @@ module.exports = {
             ephemeral: true
         });
         try{
-            i.guild.bans.create(inputUser, {
-                days: 7,
-                reason: i.options.getString("reason")
-            })
+            i.guild.bans.create(
+                {
+                    user: inputUser,
+                    options: {
+                        days: 7,
+                        reason: i.options.getString("reason")
+                    }
+                }
+            )
         }catch(err){
             i.reply({
                 embeds: [
