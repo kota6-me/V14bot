@@ -28,14 +28,12 @@ const rest = new REST({ version: '10' }).setToken(process.env.BOT_TOKEN);
             { body: adminCommands },
         );
         console.log(`[GuildCommand]${adminData.length}個のコマンドを読み込み完了`);
-        
         console.log(`${commands.length}個のコマンドを読み込み中`);
         const data = await rest.put(
             Routes.applicationCommands(config.clientId),
             { body: commands },
         );
         console.log(`[GlobalCommand]${data.length}個のコマンドを読み込み完了`);
-
     } catch (error) {
         console.error(error);
     }
