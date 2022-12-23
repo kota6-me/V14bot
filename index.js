@@ -4,6 +4,7 @@ const client = new Client({
 });
 
 const fs = require("fs");
+require("dotenv").config();
 
 const config = require("./config.js");
 const functions = require("./functions.js");
@@ -91,22 +92,22 @@ client.on("interactionCreate", async i => {
 // エラー処理 (これ入れないとエラーで落ちる。本当は良くないかもしれない)
 process.on("uncaughtException", error => {
     console.error(`[${functions.timeToJST(Date.now(), true)}] ${error.stack}`);
-    const embed = new Discord.MessageEmbed()
+    const embed = new EmbedBuilder()
         .setTitle("ERROR - uncaughtException")
         .setDescription("```\n" + error.stack + "\n```")
-        .setColor("RED")
+        .setColor("#ff0000")
         .setTimestamp();
     client.channels.cache.get(config.logch.error).send({ embeds: [embed] });
 });
 
 process.on("unhandledRejection", (reason, promise) => {
     console.error(`\u001b[31m[${functions.timeToJST(Date.now(), true)}] ${reason}\u001b[0m\n`, promise);
-    const embed = new Discord.MessageEmbed()
+    const embed = new EmbedBuilder()
         .setTitle("ERROR - unhandledRejection")
         .setDescription("```\n" + reason + "\n```")
-        .setColor("RED")
+        .setColor("#ff0000")
         .setTimestamp();
-        client.channels.cache.get(config.logch.error).send({ embeds: [embed] });
+    client.channels.cache.get(config.logch.error).send({ embeds: [embed] });
 });
 
 // APIサーバー (UptimeRobot用)
@@ -127,4 +128,4 @@ app.listen(3000, () => {
 });
 
 // ログイン
-client.login(config.token);
+client.login(process.env.BOT_TOKEN);
