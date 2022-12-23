@@ -1,6 +1,7 @@
 const { REST, Routes } = require('discord.js');
-const config = require('./config.json');
+const config = require('./config.js');
 const fs = require('node:fs');
+require("dotenv").config();
 
 const commands = [];
 const adminCommands = [];
@@ -14,26 +15,26 @@ for (const file of commandFiles) {
 
 for (const file of adminCommandFiles) {
     const command = require(`./commands/admin/${file}`);
-    commands.push(command.data.toJSON());
+    adminCommands.push(command.data.toJSON());
 }
 
-const rest = new REST({ version: '10' }).setToken(config.token);
+const rest = new REST({ version: '10' }).setToken(process.env.BOT_TOKEN);
 
 (async () => {
     try {
         console.log(`${adminCommands.length}個のコマンドを読み込み中`);
         const adminData = await rest.put(
-            Routes.applicationGuildCommands(config.clientID, config.dev.testGuild),
+            Routes.applicationGuildCommands(config.clientId, config.dev.testGuild),
             { body: adminCommands },
         );
         console.log(`[GuildCommand]${adminData.length}個のコマンドを読み込み完了`);
         
         console.log(`${commands.length}個のコマンドを読み込み中`);
         const data = await rest.put(
-            Routes.applicationGuildCommands(config.clientID),
+            Routes.applicationCommands(config.clientId),
             { body: commands },
         );
-        console.log(`[GuildCommand]${data.length}個のコマンドを読み込み完了`);
+        console.log(`[GlobalCommand]${data.length}個のコマンドを読み込み完了`);
 
     } catch (error) {
         console.error(error);
