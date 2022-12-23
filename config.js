@@ -1,15 +1,15 @@
 module.exports = {
-    clientId: "BotのID",
+    clientId: "1055146585186639872",
     color: "#2f3136",
-    token: process.env.DISCORD_TOKEN,
+    token: process.env.BOT_TOKEN,
     dev: {
-        testGuild: "テストサーバー(管理者用サーバー)のID"
+        testGuild: "1052798548330168412"
     },
     logch: {
-    ready: "起動ログチャンネルのID",
-    command: "コマンドログチャンネルのID",
-    error: "エラーログチャンネルのID",
-    guildCreate: "サーバー追加ログチャンネルのID",
-    guildDelete: "サーバー退出ログチャンネルのID"
+    ready: "1055905550627516457",
+    command: "1055905689412837428",
+    error: "1055905573180280964",
+    guildCreate: "1055905595783385139",
+    guildDelete: "1055905632894590976"
     }
 }
