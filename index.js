@@ -48,6 +48,11 @@ for (const file of eventFiles) {
 
 // コマンドが来た時
 client.on("interactionCreate", async i => {
+    if (i.isButton()){
+        if (i.customId == "delete") {
+            i.message.delete()
+        }
+    }
     if (!i.isCommand()) return;
     const command = client.commands.get(i.commandName);
     if (!command) return;
