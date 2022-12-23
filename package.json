@@ -1,0 +1,24 @@
+{
+  "name": "v14bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv": "^16.0.3",
+    "signale": "^1.4.0"
+  },
+  "dependencies": {
+    "@discordjs/builders": "^1.4.0",
+    "@discordjs/rest": "^1.5.0",
+    "discord-api-types": "^0.37.24",
+    "discord.js": "^14.7.1",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security"
+  }
+}
