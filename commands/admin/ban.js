@@ -1,11 +1,8 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
-const { Client, GatewayIntentBits, EmbedBuilder } = require('discord.js');
-const client = new Client({
-    intents: Object.values(GatewayIntentBits).reduce((a, b) => a | b)
-});
+const { EmbedBuilder } = require('discord.js');
 
 module.exports = {
-    data: new SlashCommandBuilder() // スラッシュコマンド登録のため
+    data: new SlashCommandBuilder()
         .setName("ban")
         .setDescription("ユーザーをBAN")
         .addStringOption(

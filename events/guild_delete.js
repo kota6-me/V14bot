@@ -4,7 +4,6 @@ const config = require("../config.js");
 module.exports = {
     name: "guildDelete",
     async execute(guild, client) {
-        client.user.setActivity(`Type /help | Servers: ${client.guilds.cache.size}`);
         const delEmbed = new EmbedBuilder()
             .setTitle("サーバー退出")
             .setDescription(`${guild.name}(${guild.id})からBotが退出しました。`)

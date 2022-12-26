@@ -3,7 +3,10 @@ module.exports = {
     color: "#2f3136",
     token: process.env.BOT_TOKEN,
     dev: {
-        testGuild: "1052798548330168412"
+        testGuild: "1052798548330168412",
+        developer: [
+            "716343156513439845"
+        ]
     },
     logch: {
     ready: "1055905550627516457",

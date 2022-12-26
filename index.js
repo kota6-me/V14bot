@@ -77,7 +77,7 @@ client.on("interactionCreate", async i => {
                 },
                 {
                     name: "実行サーバー",
-                    value: "```\n" + `${i.guild.name}(${i.guild?.id ?? "DM"})` + "\n```",
+                    value: "```\n" + `${i.guild?.name ?? "DM"}(${i.guild?.id ?? "DM"})` + "\n```",
                     inline: true
                 },
                 {
