@@ -1,20 +1,20 @@
-const { Client, GatewayIntentBits, EmbedBuilder, Collection } = require('discord.js');
+const { Client, GatewayIntentBits, EmbedBuilder, Collection } = require('discord.js');//Discord.js読み出し
 const client = new Client({
-    intents: Object.values(GatewayIntentBits).reduce((a, b) => a | b)
+    intents: Object.values(GatewayIntentBits).reduce((a, b) => a | b)//GatewayIntents全定義
 });
 
-const fs = require("fs");
-require("dotenv").config();
+const fs = require("fs");//ファイルコントロールシステム
+require("dotenv").config();//環境変数
 
-const config = require("./config.js");
-const functions = require("./functions.js");
+const config = require("./config.js");//設定ファイル
+const functions = require("./functions.js");//タイムスタンプ
 
 // コマンドハンドリング
 client.commands = new Collection();
 const commandFolders = fs.readdirSync("./commands");
 for (const folder of commandFolders) {
     console.log(`\u001b[32m===${folder} commands===\u001b[0m`);
-    const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith(".js"));
+    const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith(".js"));//拡張子がJSの場合
     for (const file of commandFiles) {
         const command = require(`./commands/${folder}/${file}`);
         try {
@@ -28,7 +28,7 @@ for (const folder of commandFolders) {
 }
 
 // イベントハンドリング
-const eventFiles = fs.readdirSync("./events").filter(file => file.endsWith(".js"));
+const eventFiles = fs.readdirSync("./events").filter(file => file.endsWith(".js"));//拡張子がJSの場合
 for (const file of eventFiles) {
     const event = require(`./events/${file}`);
     if (event.once) {
@@ -48,12 +48,12 @@ for (const file of eventFiles) {
 
 // コマンドが来た時
 client.on("interactionCreate", async i => {
-    if (i.isButton()){
-        if (i.customId == "delete") {
-            i.message.delete()
+    if (i.isButton()){//ボタンだった場合
+        if (i.customId == "delete") {//コマンドについてくるボタンが削除ボタンだった場合
+            i.message.delete()//メッセージ削除
         }
     }
-    if (!i.isCommand()) return;
+    if (!i.isCommand()) return;//スラッシュコマンド以外は処理を終了
     const command = client.commands.get(i.commandName);
     if (!command) return;
 
@@ -61,7 +61,7 @@ client.on("interactionCreate", async i => {
     client.func = functions;
     client.config = config;
 
-    // 実行
+    //スラッシュコマンドの実行ログをログチャンネルに出力
     try {
         await command.execute(i, client);
         const log = new EmbedBuilder()

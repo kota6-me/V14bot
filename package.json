@@ -1,14 +1,14 @@
 {
-  "name": "v14bot",
+  "name": "discordjs-v14template",
   "version": "1.0.0",
-  "description": "",
+  "description": "これはDiscord.js Ver14を使用したコマンドごとにファイル分けのできるテンプレートです。",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "mail@ritsu-me.com(Featured from Mr.Ayutsuki)",
+  "license": "MIT",
   "devDependencies": {
     "dotenv": "^16.0.3",
     "signale": "^1.4.0"

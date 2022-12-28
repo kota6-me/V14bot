@@ -2,13 +2,13 @@ const { SlashCommandBuilder } = require("@discordjs/builders");
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 
 module.exports = {
-    data: new SlashCommandBuilder() // スラッシュコマンド登録のため
+    data: new SlashCommandBuilder() 
         .setName("ping")
         .setDescription("Ping値を測定"),
 
     async execute(i, client) {
-        const apiPing = Date.now() - i.createdTimestamp
-            await i.reply({
+        const apiPing = Date.now() - i.createdTimestamp//ping取得
+            await i.reply({//ping送信
                 embeds: [
                     new EmbedBuilder()
                     .setTitle(":ping_pong:Pong!")
@@ -26,7 +26,7 @@ module.exports = {
                     .setColor("#2f3136")
                     .setTimestamp()
                 ],
-                components: [
+                components: [//コマンド削除ボタン
                     new ActionRowBuilder()
                     .addComponents(
                         new ButtonBuilder()
