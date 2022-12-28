@@ -4,7 +4,7 @@
 
 ## 使い方
 1. `git clone -b master https://github.com/ritsu-me/V14bot.git`を実行して、このソースをクローンする
-2. `npm install --production`で関連ライブラリをインストールする
+2. `npm install --omit=dev`で関連ライブラリをインストールする
 3. config.js内部の案内の通りIDをペーストする
 4. .env.EXAMPLEの`.EXAMPLE`の部分を外し、`BOT_TOKEN=`に続く部分に[ここ](https://discord.com/developers/applications)で取得したBotのトークンを貼る
 5. index.jsを実行
