@@ -1,6 +1,8 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { EmbedBuilder } = require('discord.js');
 
+const config = require("./config.js");
+
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("ban")
@@ -20,9 +22,9 @@ module.exports = {
         ,
 
     async execute(i, client) {
-        if(!i.user.id.match("716343156513439845"))return;
+        if(!i.user.id.match(config.dev.developer))return;
         const inputUser = i.options.getString("user");
-        if(!inputUser.match(/\d{10,20}/))return i.reply({
+        if(!inputUser.match(/\d{10,20}/))return i.reply({//引数がID出ない場合処理をはじく
             embeds: [
                 new EmbedBuilder()
                 .setTitle("BAN失敗")
@@ -32,7 +34,7 @@ module.exports = {
             ],
             ephemeral: true
         });
-        try{
+        try{//BANを試行
             i.guild.bans.create(
                 {
                     user: inputUser,
@@ -42,7 +44,7 @@ module.exports = {
                     }
                 }
             )
-        }catch(err){
+        }catch(err){//エラーだった場合はエラーを吐く
             i.reply({
                 embeds: [
                     new EmbedBuilder()
@@ -54,7 +56,7 @@ module.exports = {
                 ephemeral: true
             })
         }
-        i.reply({
+        i.reply({//成功した場合はBANログが出力
             embeds: [
                 new EmbedBuilder()
                 .setTitle("BAN成功")
