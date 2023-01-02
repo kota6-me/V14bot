@@ -1,7 +1,7 @@
 const { REST, Routes } = require('discord.js');
 const config = require('./config.js');
 const fs = require('node:fs');
-require("dotenv").config();
+require("dotenv").config();//環境変数:Replitの方はこの行を消してください
 
 const commands = [];
 const adminCommands = [];

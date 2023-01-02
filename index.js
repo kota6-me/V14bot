@@ -4,7 +4,7 @@ const client = new Client({
 });
 
 const fs = require("fs");//ファイルコントロールシステム
-require("dotenv").config();//環境変数
+require("dotenv").config();//環境変数:Replitの方はこの行を消してください
 
 const config = require("./config.js");//設定ファイル
 const functions = require("./functions.js");//タイムスタンプ
