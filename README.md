@@ -1,5 +1,8 @@
-# Discord.js Ver14 BotTemplate with Each Command files
+# Discord.js Ver14 BotSample<br>
+**コマンドごとにファイル分けされたBotを作るサンプル**<br>
+Replitの方は[こちら](https://github.com/ritsu-me/V14bot#replit%E3%81%A7%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9)をご覧ください
 
+---
 このテンプレートは[鮎月さんのV13テンプレート](https://ayutsuki.net/introduction/discord-js-v13-replit/)をV14に翻訳したものとなります。
 
 主な仕様
